@@ -1,27 +1,24 @@
 language: python
-env:
-  matrix:
-    - PLONE_VERSION=4.0
-    - PLONE_VERSION=4.1
-    - PLONE_VERSION=4.2
-    - PLONE_VERSION=4.3
 python:
-  - 2.7
-install:
-  - sed -ie "s#travis-4.x.cfg#travis-$PLONE_VERSION.x.cfg#" base.cfg
-  - if [ $PLONE_VERSION==4.0 -o $PLONE_VERSION==4.1 ] ; then echo -e "plone.app.testing=4.2.2\n" >> base.cfg; fi
-  - cat base.cfg # debug
-  - mkdir -p buildout-cache/eggs
-  - mkdir -p buildout-cache/downloads
-  - python bootstrap.py -c base.cfg
-  - bin/buildout -N -t 3 -c base.cfg install download install
-  - bin/buildout -N -t 3 -c base.cfg
+- 2.7
 before_script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+install:
+- git clone https://github.com/collective/collective.themetest ..
+- cd ../collective.themetest
+- mkdir -p buildout-cache/downloads build/html
+- python bootstrap.py -c travis.cfg
+- bin/buildout -c travis.cfg buildout:source-dir=.. "source:plonetheme.bootstrap=fs
+  plonetheme.bootstrap"
 script:
-  - bin/test
+- bin/sphinx-build -b html source build/html
 after_script:
-  - cd parts/test
-  - tar cvjf artifacts.tar.bz2 *
-  - curl http://collective_artifacts.rr.nu/submit_artifacts   --form archive=@artifacts.tar.bz2 --form TRAVIS_JOB_ID=$TRAVIS_JOB_ID
+- travis-artifacts upload --path build/html
+env:
+  global:
+  - ARTIFACTS_S3_BUCKET=plonetheme.bootstrap
+  - CONFIGURE_PACKAGES=plonetheme.bootstrap
+  - APPLY_PROFILES=plonetheme.bootstrap:default
+  - secure: f31GHIEGGrtIIdEy7JAHG/gCwazqGLpDcHxnHX8eaj/V9VSbc2gSKk2GFSNHyOyyvR+OCwPd3J7QDTntpGbihOld5dBb6Cy+9zDd/Rpd3FTsjIsVDta2YXDVc3R7Znrah7DFjv8lLZ+7EDZ7rKbvODZRAAFuDcAZ9yD/Kt8b+vk=
+  - secure: qBt2U1vm0dytn1n7rzcsK8y1S+QU34hHSW+2YZehDerRyMgy1T/quVwDeq1o4kP7MRRplUxATT16jTBx8B8oFgjQ89UQsQlLvzcH5uMWalhn2x+X0fmn+bR7QfvSMfeMaicwLVZ5+qDUfNw7VS8w2Dj62E/t5h7bKfOr49HMyZs=
