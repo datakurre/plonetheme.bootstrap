@@ -9,7 +9,7 @@ install:
 - cd ../collective.themetest
 - mkdir -p buildout-cache/downloads build/html
 - python bootstrap.py -c travis.cfg
-- bin/buildout -c travis.cfg buildout:source-dir=.. "sources:plonetheme.bootstrap=fs
+- bin/buildout -c travis.cfg buildout:sources-dir=.. "sources:plonetheme.bootstrap=fs
   plonetheme.bootstrap" buildout:auto-checkout=plonetheme.bootstrap
 script:
 - bin/sphinx-build -b html source build/html
