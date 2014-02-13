@@ -1,7 +1,7 @@
 language: python
 python:
 - 2.7
-before_script:
+before_install:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 install:
@@ -15,6 +15,9 @@ install:
   buildout:auto-checkout=collective.js.bootstrap
   buildout:eggs=plonetheme.bootstrap
   versions:plone.app.jquery=1.8.3
+before_script:
+- gem install --version 0.8.9 faraday
+- gem install travis-artifacts
 script:
 - bin/sphinx-build -b html source build/html
 after_script:
