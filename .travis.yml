@@ -14,6 +14,7 @@ install:
   sources:collective.js.bootstrap="git https://github.com/collective/collective.js.bootstrap"
   buildout:auto-checkout=collective.js.bootstrap
   buildout:eggs=plonetheme.bootstrap
+  versions:plone.app.jquery=1.8.3
 script:
 - bin/sphinx-build -b html source build/html
 after_script:
