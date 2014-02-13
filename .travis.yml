@@ -25,6 +25,8 @@ after_script:
 env:
   global:
   - ARTIFACTS_S3_BUCKET=plonetheme-bootstrap
+  - SPHINX_PROJECT=plonetheme.bootstrap
+  - SPHINX_COPYRIGHT=Collective
   - ROBOT_CONFIGURE_PACKAGES=plonetheme.bootstrap
   - ROBOT_APPLY_PROFILES=plone.app.theming:default,plonetheme.bootstrap:default
   - secure: f31GHIEGGrtIIdEy7JAHG/gCwazqGLpDcHxnHX8eaj/V9VSbc2gSKk2GFSNHyOyyvR+OCwPd3J7QDTntpGbihOld5dBb6Cy+9zDd/Rpd3FTsjIsVDta2YXDVc3R7Znrah7DFjv8lLZ+7EDZ7rKbvODZRAAFuDcAZ9yD/Kt8b+vk=
