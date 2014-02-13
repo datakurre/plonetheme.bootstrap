@@ -5,7 +5,7 @@ before_script:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 install:
-- git clone https://github.com/collective/collectire.themetest ../themepreview
+- git clone https://github.com/collective/collective.themetest ../themepreview
 - mkdir -p buildout-cache/downloads build/html
 - python ../themepreview/bootstrap.py -c ../themepreview/.travis.cfg
 - bin/buildout -c ../themepreview/travis.cfg
