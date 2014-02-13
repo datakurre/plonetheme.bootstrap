@@ -6,9 +6,10 @@ before_script:
 - sh -e /etc/init.d/xvfb start
 install:
 - git clone https://github.com/collective/collective.themetest ../themepreview
-- mkdir -p ../themepreview/buildout-cache/downloads build/html
-- python ../themepreview/bootstrap.py -c ../themepreview/travis.cfg
-- ../themepreview/bin/buildout -c ../themepreview/travis.cfg
+- cd ../themepreview
+- mkdir -p buildout-cache/downloads build/html
+- python bootstrap.py -c travis.cfg
+- bin/buildout -c travis.cfg
   buildout:develop=../plonetheme.bootstrap
   sources:collective.js.bootstrap="git https://github.com/collective/collective.js.bootstrap"
   buildout:auto-checkout=collective.js.bootstrap
