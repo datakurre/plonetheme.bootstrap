@@ -25,8 +25,8 @@ after_script:
 env:
   global:
   - ARTIFACTS_S3_BUCKET=plonetheme-bootstrap
-  - CONFIGURE_PACKAGES=plonetheme.bootstrap
-  - APPLY_PROFILES=plonetheme.bootstrap:default
+  - ROBOT_CONFIGURE_PACKAGES=plonetheme.bootstrap
+  - ROBOT_APPLY_PROFILES=plonetheme.bootstrap:default
   - secure: f31GHIEGGrtIIdEy7JAHG/gCwazqGLpDcHxnHX8eaj/V9VSbc2gSKk2GFSNHyOyyvR+OCwPd3J7QDTntpGbihOld5dBb6Cy+9zDd/Rpd3FTsjIsVDta2YXDVc3R7Znrah7DFjv8lLZ+7EDZ7rKbvODZRAAFuDcAZ9yD/Kt8b+vk=
   - secure: qBt2U1vm0dytn1n7rzcsK8y1S+QU34hHSW+2YZehDerRyMgy1T/quVwDeq1o4kP7MRRplUxATT16jTBx8B8oFgjQ89UQsQlLvzcH5uMWalhn2x+X0fmn+bR7QfvSMfeMaicwLVZ5+qDUfNw7VS8w2Dj62E/t5h7bKfOr49HMyZs=
 notifications:
