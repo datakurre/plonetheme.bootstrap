@@ -14,6 +14,7 @@ install:
   "sources:plonetheme.bootstrap=fs plonetheme.bootstrap"
   "sources:collective.js.bootstrap=git https://github.com/collective/collective.js.bootstrap"
   "buildout:auto-checkout=plonetheme.bootstrap collective.js.bootstrap"
+  "buildout:eggs=plonetheme.bootstrap"
 script:
 - bin/sphinx-build -b html source build/html
 after_script:
