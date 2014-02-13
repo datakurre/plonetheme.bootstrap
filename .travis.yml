@@ -24,7 +24,7 @@ after_script:
 - travis-artifacts upload --path build/html
 env:
   global:
-  - ARTIFACTS_S3_BUCKET=plonetheme.bootstrap
+  - ARTIFACTS_S3_BUCKET=plonetheme-bootstrap
   - CONFIGURE_PACKAGES=plonetheme.bootstrap
   - APPLY_PROFILES=plonetheme.bootstrap:default
   - secure: f31GHIEGGrtIIdEy7JAHG/gCwazqGLpDcHxnHX8eaj/V9VSbc2gSKk2GFSNHyOyyvR+OCwPd3J7QDTntpGbihOld5dBb6Cy+9zDd/Rpd3FTsjIsVDta2YXDVc3R7Znrah7DFjv8lLZ+7EDZ7rKbvODZRAAFuDcAZ9yD/Kt8b+vk=
