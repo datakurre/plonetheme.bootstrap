@@ -5,16 +5,14 @@ before_script:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 install:
-- git clone https://github.com/collective/collective.themetest ../collective.themetest
-- cd ../collective.themetest
+- git clone https://github.com/collective/collectire.themetest ../themepreview
 - mkdir -p buildout-cache/downloads build/html
-- python bootstrap.py -c travis.cfg
-- bin/buildout -c travis.cfg
-  "buildout:sources-dir=.."
-  "sources:plonetheme.bootstrap=fs plonetheme.bootstrap"
-  "sources:collective.js.bootstrap=git https://github.com/collective/collective.js.bootstrap"
-  "buildout:auto-checkout=plonetheme.bootstrap collective.js.bootstrap"
-  "buildout:eggs=plonetheme.bootstrap"
+- python ../themepreview/bootstrap.py -c ../themepreview/.travis.cfg
+- bin/buildout -c ../themepreview/travis.cfg
+  buildout:develop=.
+  sources:collective.js.bootstrap="git https://github.com/collective/collective.js.bootstrap"
+  buildout:auto-checkout=collective.js.bootstrap
+  buildout:eggs=plonetheme.bootstrap
 script:
 - bin/sphinx-build -b html source build/html
 after_script:
